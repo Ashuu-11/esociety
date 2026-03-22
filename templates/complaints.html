@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>My Complaints</h2>
+
+<a href="/accounts/add-complaint/">Add Complaint</a>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Date</th>
+    </tr>
+
+    {% for complaint in complaints %}
+    <tr>
+        <td>{{ complaint.title }}</td>
+        <td>
+            {% if complaint.status == "Pending" %}
+                <span style="color:red;">Pending</span>
+            {% else %}
+                <span style="color:green;">Resolved</span>
+            {% endif %}
+        </td>
+        <td>{{ complaint.created_at }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

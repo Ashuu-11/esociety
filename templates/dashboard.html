@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+<div class="sidebar">
+
+<h2 class="sidebar-title">E-Society</h2>
+
+<ul class="sidebar-menu">
+
+<li><a href="#">Dashboard</a></li>
+<li><a href="#">Residents</a></li>
+<li><a href="/accounts/complaints/">Complaints</a></li>
+<li><a href="#">Announcements</a></li>
+<li><a href="#">Maintenance</a></li>
+
+<li><a href="/accounts/logout/">Logout</a></li>
+
+</ul>
+
+</div>
+
+
+<div class="dashboard-content">
+
+<h1>Dashboard</h1>
+
+<div class="stats">
+
+<div class="stat-card blue">
+<h3>Residents</h3>
+<p>{{ resident_count }}</p>
+</div>
+
+<div class="stat-card orange">
+<h3>Complaints</h3>
+<p>{{ complaint_count }}</p>
+</div>
+
+<div class="stat-card green">
+<h3>Announcements</h3>
+<p>{{ announcements_count }}</p>
+</div>
+
+</div>
+
+
+<div class="recent-section">
+
+<h2>Recent Complaints</h2>
+
+<ul>
+    {% for complaint in recent_complaints %}
+        <li>
+            {{ complaint.title }}
+
+            {% if complaint.status == "Pending" %}
+                <span class="status pending">Pending</span>
+            {% else %}
+                <span class="status resolved">Resolved</span>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No complaints yet</li>
+    {% endfor %}
+</ul>
+
+
+
+</div>
+
+<div class="recent-section">
+
+<h2>Announcements</h2>
+
+<ul>
+    {% for announcement in announcements %}
+        <li style="flex-direction: column; align-items: flex-start;">
+            <strong>{{ announcement.title }}</strong>
+            <p style="margin: 5px 0 0; color: #555;">
+                {{ announcement.message }}
+            </p>
+        </li>
+    {% empty %}
+        <li>No announcements available</li>
+    {% endfor %}
+</ul>
+
+</div>
+
+<div class="recent-section">
+
+<h2>Maintenance</h2>
+
+<ul>
+    {% for m in maintenances %}
+        <li style="flex-direction: column; align-items: flex-start;">
+            
+            <strong>{{ m.title }}</strong>
+
+            <p style="margin: 5px 0;">
+                Amount: ₹{{ m.amount }}
+            </p>
+
+            <p style="margin: 0; color: #666;">
+                Due: {{ m.due_date }}
+            </p>
+
+            <button class="pay-btn">Pay Now</button>
+
+        </li>
+    {% empty %}
+        <li>No maintenance dues</li>
+    {% endfor %}
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
