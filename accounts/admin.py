@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Resident, Complaint, Announcement, Maintenance, Payment
+from .models import Resident, Complaint, Announcement, Maintenance, Payment, Guard, Visitor
 
 
 class ResidentAdmin(admin.ModelAdmin):
@@ -28,3 +28,16 @@ class PaymentAdmin(admin.ModelAdmin):
     list_display = ('user', 'maintenance', 'status', 'created_at')
 
 admin.site.register(Payment,PaymentAdmin)
+
+
+
+class GuardAdmin(admin.ModelAdmin):
+    list_display = ('user', 'name', 'phone')
+
+admin.site.register(Guard, GuardAdmin)
+
+
+class VisitorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'resident', 'status', 'entry_time')
+
+admin.site.register(Visitor, VisitorAdmin)

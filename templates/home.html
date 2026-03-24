@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -21,7 +22,6 @@ Manage residents, complaints, announcements and maintenance payments easily.
 <div class="hero-buttons">
 
 <a href="/accounts/signup/" class="primary-btn">Try for free</a>
-
 <a href="#" class="secondary-btn">See how it works</a>
 
 </div>
@@ -29,9 +29,7 @@ Manage residents, complaints, announcements and maintenance payments easily.
 </div>
 
 <div class="hero-right">
-
-<div class="image-placeholder"></div>
-
+    <img src="{% static 'images/society.jpg' %}" alt="Society Image">
 </div>
 
 </section>

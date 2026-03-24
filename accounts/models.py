@@ -77,3 +77,50 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.maintenance} - {self.status}"
+    
+
+
+
+class Guard(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+    
+
+
+
+
+class Visitor(models.Model):
+
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15)
+
+    resident = models.ForeignKey(Resident, on_delete=models.CASCADE)
+
+    purpose = models.CharField(max_length=200, blank=True)
+
+    entry_time = models.DateTimeField(auto_now_add=True)
+    exit_time = models.DateTimeField(null=True, blank=True)
+
+    status = models.CharField(
+        max_length=10,
+        choices=[
+            ('PENDING', 'Pending'),
+            ('APPROVED', 'Approved'),
+            ('REJECTED', 'Rejected'),
+            ('IN', 'In'),
+            ('OUT', 'Out')
+        ],
+        default='PENDING'
+    )
+
+    def __str__(self):
+        return f"{self.name} -> {self.resident.name}"
+

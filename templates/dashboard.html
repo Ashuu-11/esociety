@@ -118,6 +118,39 @@
 
 </div>
 
+<div class="recent-section">
+
+    <h3>Visitor Requests</h3>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for v in visitors %}
+    <tr>
+        <td>{{ v.name }}</td>
+        <td>{{ v.phone }}</td>
+        <td>{{ v.status }}</td>
+
+        <td>
+            {% if v.status == "PENDING" %}
+                <a href="{% url 'approve_visitor' v.id %}">Accept</a>
+                <a href="{% url 'reject_visitor' v.id %}">Reject</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No visitor requests</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
 </div>
 
 </div>

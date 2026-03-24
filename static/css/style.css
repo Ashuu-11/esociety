@@ -40,8 +40,12 @@ body {
 }
 
 .login-btn {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
     text-decoration: none;
-    color: #333;
+    font-weight: 500;
 }
 
 .signup-btn {
@@ -433,4 +437,30 @@ body {
 /* Ensure stat text always visible */
 .stat-card * {
     color: white;
+}
+
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 100px;
+    gap: 40px;
+}
+
+.hero-left {
+    width: 50%;
+}
+
+.hero-right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-right img {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 12px;
+    object-fit: cover;
 }
