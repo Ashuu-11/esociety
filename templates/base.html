@@ -18,9 +18,15 @@
                 <a href="#">Contact</a>
             </li>
          </ul> 
-         <div class="auth-buttons">
-             <a href="/accounts/login/" class="login-btn">Log in</a>
-            </div> 
+         <div class="login-dropdown">
+    <button class="login-btn">Log in ▼</button>
+
+    <div class="dropdown-content">
+        <a href="/accounts/login/">Resident Login</a>
+        <a href="/guard/login/">Guard Login</a>
+        <a href="/admin/">Admin Login</a>
+    </div>
+</div> 
         </nav> 
         {% block content %} {% endblock %} 
     </body>
